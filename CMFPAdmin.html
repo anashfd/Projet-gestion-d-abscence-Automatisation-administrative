@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CMFP Agadir</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<h1>CMFP Agadir - Automatisation des documents</h1>
+
+<p>1. Base de données: <input type="file" id="file"></p>
+<p id="status">En attente du fichier...</p>
+
+<p>2. Groupe: <select id="group"></select></p>
+
+<p>3. Année de formation: <input id="year" value="2025-2026"> (format 2025-2026)</p>
+
+<button id="btnTabEff">Examens de fin de formation</button>
+<button id="btnTabEfm">EFM / Contrôle continu</button>
+<button id="btnTabDisc">PV conseil de discipline</button>
+
+<hr>
+
+<div id="tabEff">
+  <h3>Examen Fin Formation</h3>
+  <p>
+    Épreuve: <input id="epreuve">
+    Date: <input type="date" id="date">
+    Heure: <input id="heure">
+    Salle / Atelier: <input id="salle">
+    Session: <input id="session">
+  </p>
+  <button id="btnConvocation">Convocations</button>
+  <button id="btnPresence">Feuille de présence</button>
+  <button id="btnListe">Liste d'affichage</button>
+</div>
+
+<div id="tabEfm" hidden>
+  <h4>Examen Fin de Module / Contrôle Continu</h4>
+  <p>
+    Type:
+    <select id="emType">
+      <option>EXAMEN DE FIN DE MODULE</option>
+      <option>Contrôle continu</option>
+    </select>
+    Intitulé du module: <input id="emModule">
+    Date: <input type="date" id="emDate">
+    Horaire: <input id="emHoraire" placeholder="de 08h30 à 10h30">
+  </p>
+  <button id="btnEfm">Générer la liste de présence</button>
+</div>
+
+<div id="tabDisc" hidden>
+  <h3>Conseil Discipline</h3>
+  <p>
+    Date du conseil: <input type="date" id="dcDate">
+    Stagiaire (groupe choisi): <select id="dcStudent"></select>
+    Heures d'absence: <input type="number" id="dcHours" value="0">
+    Autre fait (optionnel): <input id="dcOther" dir="rtl" placeholder="مثال: الشغب و رفع الصوت على المكون">
+  </p>
+  <p>
+    Décision:
+    <select id="dcDecision">
+      <option>.توقيف المتدرب لمدة يومين مع الحضور الى المؤسسة من 8:00 الى 18:00</option>
+      <option>.توقيف المتدرب لمدة يومين مع الحضور الى المؤسسة من 8:00 الى 18:00  مع احالته الى مجلس تأديبي ثاني لتدارس حيثيات غيابه</option>
+      <option>.المتابعة مع مستشارة التوجيه واعلام ولي الأمر بالمستوى المتدني للمتدرب</option>
+      <option>.إنذار كتابي</option>
+    </select>
+  </p>
+  <button id="btnDisc">Générer le PV</button>
+</div>
+
+<hr>
+
+<button id="btnPrint">Imprimer</button>
+
+<hr>
+
+<div id="output"></div>
+
+<script src="CMFPAdmin.js"></script>
+</body>
+</html>
